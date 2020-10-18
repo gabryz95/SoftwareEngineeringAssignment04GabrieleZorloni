@@ -1,0 +1,35 @@
+package actions.authentication;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import model.authentication.User;
+
+public class UserListAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private final Controller controller = Controller.getInstance();
+
+	private List<User> adminList;
+
+	public List<User> getAdminList() {
+		return adminList;
+	}
+
+	public void setAdminList(List<User> adminList) {
+		this.adminList = adminList;
+	}
+
+	public String execute() {
+		adminList = controller.getAdminList();
+		return "success";
+	}
+}

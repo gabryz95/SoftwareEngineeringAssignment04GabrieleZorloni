@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome</title>
+
+</head>
+<body>
+	<h2>ADMIN LIST</h2>
+
+	<s:form action="userlist.action" method="get">
+		<s:iterator value="adminList">
+			<article>
+				<p>
+					USERNAME:
+					<s:property value="username" />
+				</p>
+				<p>
+					PASSWORD:
+					<s:property value="password" />
+				</p>
+				<p>
+					NAME:
+					<s:property value="name" />
+				</p>
+				<p>
+					EMAIL:
+					<s:property value="email" />
+				</p>
+				<p>
+					CITY:
+					<s:property value="city" />
+				</p>
+				<p>
+					COUNTRY:
+					<s:property value="country" />
+				</p>
+				<br />
+			</article>
+		</s:iterator>
+		<s:submit method="execute" align="center" />
+	</s:form>
+
+</body>
+</html>

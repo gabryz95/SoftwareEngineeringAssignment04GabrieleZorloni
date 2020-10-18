@@ -1,0 +1,31 @@
+package actions.userlist;
+
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import actions.controller.ActionController;
+import model.authentication.User;
+
+public class NormalUserListAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	private List<User> normalUserList = ActionController.getInstance().getAdminList();
+
+	public List<User> getNormalUserList() {
+		return normalUserList;
+	}
+
+	public void setNormalUserList(List<User> normalUserList) {
+		this.normalUserList = normalUserList;
+	}
+
+	// Method that allows us to display the admin user list.
+	public String execute() {
+		if (normalUserList.size() > 0)
+			return "success";
+		else
+			return "error";
+	}
+}

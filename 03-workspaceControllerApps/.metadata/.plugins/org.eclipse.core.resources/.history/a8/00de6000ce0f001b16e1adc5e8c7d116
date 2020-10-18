@@ -1,0 +1,61 @@
+package actions.authentication;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+import model.authentication.Login;
+import model.authentication.User;
+
+public class LoginAction extends ActionSupport {
+
+	private static final long serialVersionUID = 1L;
+
+	private final List<User> userList = new ArrayList<User>();
+
+	// Data coming from the form, automatically injected by STRUTS
+	private String username;
+	private String password;
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void addUser(User user) {
+		userList.add(user);
+	}
+
+	// Default method invoked by STRUTS2
+	public String execute() {
+		
+		for(User u: userList)
+			System.out.println(u.toString());
+		
+		// get reference to Login logic,
+		// in this example create a Login object
+		Login login = new Login("user", "pwd");
+
+		// execute the operation and return the result to STRUTS
+		if (login.autheticate(username, password)) {
+			return "success";
+		} else {
+			addActionError(getText("error.login"));
+			return "error";
+		}
+
+	}
+
+}

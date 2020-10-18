@@ -1,0 +1,18 @@
+
+
+log.username = Username
+log.password = Password
+log.login = Login
+error.login = Invalid Username/Password. Please try again.
+
+reg.username = Username
+reg.password = Password
+reg.name = Name
+reg.email = Email
+reg.city = City
+reg.country = Country
+reg.signup = Sign Up
+error.reg = Invalid or Empty field/s. Please add the missing values.
+error.dup = User Already Registered. Please try Again.
+
+userlist.show = Show Admin Users

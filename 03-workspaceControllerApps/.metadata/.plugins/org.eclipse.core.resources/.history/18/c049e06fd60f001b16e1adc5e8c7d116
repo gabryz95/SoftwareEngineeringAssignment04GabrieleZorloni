@@ -1,0 +1,32 @@
+package actions.authentication;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.authentication.User;
+
+public final class Controller {
+
+	private static Controller INSTANCE = null;
+
+	private final List<User> userList = new ArrayList<User>();
+
+	private Controller() {
+
+	}
+
+	public static Controller getInstance() {
+		if (INSTANCE == null)
+			INSTANCE = new Controller();
+		return INSTANCE;
+	}
+
+	public void addUser(User user) {
+		userList.add(user);
+	}
+
+	public int size() {
+		return userList.size();
+	}
+
+}

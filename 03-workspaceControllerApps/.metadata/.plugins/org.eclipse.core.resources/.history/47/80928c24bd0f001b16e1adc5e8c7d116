@@ -1,0 +1,9 @@
+label.username = Username
+label.password = Password
+label.name = Name
+label.email = Email
+label.city = City
+label.country = Country
+label.login = Login
+label.signup = Sign Up
+error.login = Invalid Username/Password. Please try again.

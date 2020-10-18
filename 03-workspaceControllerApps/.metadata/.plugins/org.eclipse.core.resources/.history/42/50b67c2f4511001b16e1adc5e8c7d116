@@ -1,0 +1,7 @@
+package actions.userlist;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class NormalUserListAction extends ActionSupport {
+
+}

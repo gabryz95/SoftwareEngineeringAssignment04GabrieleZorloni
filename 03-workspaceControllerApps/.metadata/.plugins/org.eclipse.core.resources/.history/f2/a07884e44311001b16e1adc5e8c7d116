@@ -1,0 +1,97 @@
+//AUTHOR: GABRIELE ZORLONI
+package actions.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.authentication.Admin;
+import model.authentication.Login;
+import model.authentication.NormalUser;
+import model.authentication.User;
+
+// Class containing the list of all users, including pre-loaded admin users. 
+// It also finishes methods that will be used by the defined actions
+public final class ActionController {
+
+	private static ActionController INSTANCE = null;
+
+	private final List<User> userList = new ArrayList<User>();
+
+	private ActionController() {
+		addPreloadedAdminUser();
+	}
+
+	public static ActionController getInstance() {
+		if (INSTANCE == null)
+			INSTANCE = new ActionController();
+		return INSTANCE;
+	}
+
+	private void addPreloadedAdminUser() {
+		userList.add(new Admin("Admin1", "Admin1", "Admin1", "admin1@admin.com", "Admin1", "Admin1"));
+		userList.add(new Admin("Admin2", "Admin2", "Admin2", "admin2@admin.com", "Admin2", "Admin2"));
+		userList.add(new Admin("Admin3", "Admin3", "Admin3", "admin3@admin.com", "Admin3", "Admin3"));
+		userList.add(new Admin("Admin4", "Admin4", "Admin4", "admin4@admin.com", "Admin4", "Admin4"));
+		userList.add(new Admin("Test", "TestTest", "TestName", "test@test.com", "TestCity", "TestCountry"));
+	}
+
+	// Method that allows to add a new user  to add a new user to the list.
+	public void addUser(User user) {
+		userList.add(user);
+	}
+
+	// Method that allows to obtain a user based on his username and password. 
+	// If the user is not present, it returns null.
+	public User getUserByUsernameAndPassword(String username, String password) {
+		for (User user : userList)
+			if ((user.getUsername().equals(username)) && (user.getPassword().equals(password)))
+				return user;
+		return null;
+	}
+	
+	// Method that allows to have the list of all admin users.
+	public List<User> getAdminList() {
+		List<User> adminList = new ArrayList<User>();
+
+		for (User user : userList)
+			if (user instanceof Admin)
+				adminList.add(user);
+		return adminList;
+	}
+
+	// Method that allows to have the list of all normal users.
+	public List<User> getNormalUserList() {
+		List<User> normalUserList = new ArrayList<User>();
+
+		for (User user : userList)
+			if (user instanceof NormalUser)
+				normalUserList.add(user);
+		return normalUserList;
+	}
+
+	// 
+	public boolean chechUserInput(User user) {
+		if (user.getUsername().isEmpty() || user.getPassword().isEmpty() || user.getName().isEmpty()
+				|| user.getEmail().isEmpty() || user.getCity().isEmpty() || user.getCountry().isEmpty())
+			return false;
+		return true;
+	}
+
+	//
+	public boolean checkUser(User user) {
+		for (User u : userList)
+			if (u.getUsername().equals(user.getUsername()))
+				return true;
+		return false;
+	}
+
+	// Method that allows to check that your login credentials are correct, 
+	// i.e. that they belong to a lament in the list of users.
+	public boolean checkLogin(Login login) {
+		for (User user : userList)
+			if ((user.getUsername().equals(login.getUsername())) && (user.getPassword().equals(login.getPassword())))
+				return true;
+		return false;
+	}
+
+}

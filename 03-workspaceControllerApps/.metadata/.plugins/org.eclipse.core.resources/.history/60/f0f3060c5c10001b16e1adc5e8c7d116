@@ -1,0 +1,20 @@
+package actions.authentication;
+
+import com.opensymphony.xwork2.ActionSupport;
+
+public class UserListAction extends ActionSupport {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private final Controller controller = Controller.getInstance();
+	private List<User> adminList = controller.getAdminList();
+	
+	
+	public String execute() {
+		return "success";
+	}
+
+}

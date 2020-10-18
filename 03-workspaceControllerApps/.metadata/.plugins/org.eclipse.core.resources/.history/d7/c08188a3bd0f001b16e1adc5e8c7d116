@@ -1,0 +1,14 @@
+log.username = Username
+log.password = Password
+log.login = Login
+
+reg.username = Username
+reg.password = Password
+reg.name = Name
+reg.email = Email
+reg.city = City
+reg.country = Country
+reg.signup = Sign Up
+
+
+error.login = Invalid Username/Password. Please try again.

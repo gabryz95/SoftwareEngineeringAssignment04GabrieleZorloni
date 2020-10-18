@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Login Application</title>
+</head>
+<body>
+
+	<h2>Login Application</h2>
+
+	<div class="topnav">
+		<a href="registration.jsp">Sign Up</a> <a href="userList.jsp">User
+			List</a>
+	</div>
+	<br>
+
+	<s:actionerror />
+
+	<s:form action="login.action" method="post">
+		<s:textfield name="username" key="log.username" size="50" />
+		<s:password name="password" key="log.password" size="50" />
+		<s:submit method="execute" key="log.login" align="center" />
+	</s:form>
+</body>
+</html>

@@ -1,0 +1,70 @@
+package actions.authentication;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.authentication.Admin;
+import model.authentication.Login;
+import model.authentication.User;
+
+public final class Controller {
+
+	private static Controller INSTANCE = null;
+
+	private final List<User> userList = new ArrayList<User>();
+
+	private Controller() {
+		addPreloadedAdminUser();
+	}
+
+	public static Controller getInstance() {
+		if (INSTANCE == null)
+			INSTANCE = new Controller();
+		return INSTANCE;
+	}
+
+	private void addPreloadedAdminUser() {
+		userList.add(new Admin("Admin1", "Admin1", "admin1@admin.com", "Admin1", "Admin1", "Admin1"));
+		userList.add(new Admin("Admin2", "Admin2", "admin2@admin.com", "Admin2", "Admin2", "Admin2"));
+		userList.add(new Admin("Admin3", "Admin3", "admin3@admin.com", "Admin3", "Admin3", "Admin3"));
+		userList.add(new Admin("Admin4", "Admin4", "admin4@admin.com", "Admin4", "Admin4", "Admin4"));
+		userList.add(
+				new Admin("Pippo", "Paperino", "pippo@paperino.com", "PippoPaperino", "Pippolandia", "Paperopoli"));
+	}
+
+	public void addUser(User user) {
+		userList.add(user);
+	}
+
+	public User getUserByUsernameAndPassword(String username, String password) {
+		for (User user : userList)
+			if ((user.getUsername().equals(username)) && (user.getPassword().equals(password)))
+				return user;
+		return null;
+	}
+
+	public List<User> getAdminList() {
+		List<User> adminList = new ArrayList<User>();
+
+		for (User user : userList)
+			if (user instanceof Admin)
+				adminList.add(user);
+		System.out.println("SIZE: " + adminList.size());
+		return adminList;
+	}
+
+	public boolean chechUserInput(User user) {
+		if (user.getUsername().isEmpty() || user.getPassword().isEmpty() || user.getName().isEmpty()
+				|| user.getEmail().isEmpty() || user.getCity().isEmpty() || user.getCountry().isEmpty())
+			return false;
+		return true;
+	}
+
+	public boolean checkLogin(Login login) {
+		for (User user : userList)
+			if ((user.getUsername().equals(login.getUsername())) && (user.getPassword().equals(login.getPassword())))
+				return true;
+		return false;
+	}
+
+}

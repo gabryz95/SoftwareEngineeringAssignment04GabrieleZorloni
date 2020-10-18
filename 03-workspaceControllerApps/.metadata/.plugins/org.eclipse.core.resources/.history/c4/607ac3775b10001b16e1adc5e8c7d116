@@ -1,0 +1,5 @@
+package actions.authentication;
+
+public class UserListAction {
+
+}

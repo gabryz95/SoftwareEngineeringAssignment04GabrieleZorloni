@@ -1,0 +1,14 @@
+INDEX VERSION 1.4+/Users/gabrielezorloni/Downloads/03-workspaceControllerApps/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1364162017.index
+1404459331.index
+762353831.index
+2586419068.index
+730461719.index
+1162957245.index
+4025099492.index
+2555413343.index
+3899349259.index
+2222888982.index
+1415734773.index
+3341763203.index
+3094669073.index

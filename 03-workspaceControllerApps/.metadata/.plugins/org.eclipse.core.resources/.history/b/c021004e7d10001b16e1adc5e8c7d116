@@ -1,0 +1,24 @@
+package actions.authentication;
+
+import java.util.List;
+
+import model.authentication.User;
+
+public class UserListAction {
+
+	private final Controller controller = Controller.getInstance();
+
+	private List<User> adminList = controller.getAdminList();
+
+	public List<User> getAdminList() {
+		return adminList;
+	}
+
+	public void setAdminList(List<User> adminList) {
+		this.adminList = adminList;
+	}
+
+	public String execute() {
+		return "success";
+	}
+}
