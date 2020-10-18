@@ -9,7 +9,7 @@
 
 </head>
 <body>
-	<h2>ADMIN LIST</h2>
+	<h2>NORMAL USER LIST</h2>
 
 	<div class="topnav">
 		<a href="/Struts2Login">LOGIN</a>
@@ -23,7 +23,7 @@
 	<s:form action="normaluserlist.action" method="get">
 		<s:iterator value="normalUserList">
 			<p>
-				ADMIN
+				NORMAL USER
 				<s:property value="username" />
 				PERSONAL INFORMATION
 			</p>
